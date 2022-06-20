@@ -1,31 +1,46 @@
 //1
 const data = { a: 1 };
-//write your code here 
+function isPlainObject(obj) {
+    return obj !== null && typeof obj === 'object' && obj.constructor === Object;
+}
 console.log(isPlainObject(data)); // true
 
 //2
 const data2 = { a: 1, b: 2 };
-//write your code here 
+function makePairs(obj) {    
+    return Object.entries(obj);
+}
 console.log(makePairs(data2)); // [['a', 1], ['b', 2]] 
 
 //3
 const data3 = { a: 1, b: 2 };
-//write your code here 
+function without(obj, properties) {
+    return Object.keys(obj).reduce((acc, key) => {
+        if (!properties.includes(key)) {
+            acc[key] = obj[key];
+        }
+        return acc;
+    }, {});
+}
 console.log(without(data3, 'b')); // { a: 1 }
 
 
 //4
 const data4 = { a: 1, b: undefined };
-const data40 = { a:undefined };
-//write your code here 
+const data40 = {};
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
 console.log(isEmpty(data4)); // false
 console.log(isEmpty(data40)); // true 
 
-//5
+//5. 
 const data5 = { a: 1, b: 1 };  
 const data51 = { a: 1, b: 1 };  
 const data52 = { a: 1, b: 2 };
-//write your code here 
+function isEqual(obj1, obj2) {
+    return Object.keys(obj1).every(key => obj1[key] === obj2[key]);
+}
 console.log(isEqual(data5, data51)); // true  
 console.log(isEqual(data5, data52)); // false
 
